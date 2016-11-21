@@ -17,3 +17,8 @@ void mrbScriptingInit(int setup) {
 void mrbScriptingRelease(void) {
   mrb_close(server.mrb);
 }
+
+void mrbScriptingReset(void) {
+  mrbScriptingRelease();
+  mrbScriptingInit(0);
+}
