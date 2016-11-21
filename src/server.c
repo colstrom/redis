@@ -275,6 +275,7 @@ struct redisCommand redisCommandTable[] = {
     {"client",clientCommand,-2,"as",0,NULL,0,0,0,0,0},
     {"eval",evalCommand,-3,"s",0,evalGetKeys,0,0,0,0,0},
     {"evalsha",evalShaCommand,-3,"s",0,evalGetKeys,0,0,0,0,0},
+    {"mrbeval",mrbEvalCommand,-3,"s",0,evalGetKeys,0,0,0,0,0},
     {"slowlog",slowlogCommand,-2,"a",0,NULL,0,0,0,0,0},
     {"script",scriptCommand,-2,"s",0,NULL,0,0,0,0,0},
     {"time",timeCommand,1,"RF",0,NULL,0,0,0,0,0},
