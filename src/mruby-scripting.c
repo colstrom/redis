@@ -6,5 +6,10 @@ void mrbScriptingInit(int setup) {
 
   if (setup) server.mrb_client = NULL;
 
+  if (server.mrb_client == NULL) {
+    server.mrb_client = createClient(-1);
+    server.mrb_client->flags |= CLIENT_LUA;
+  }
+
   server.mrb = mrb;
 }
