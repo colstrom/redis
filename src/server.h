@@ -1468,6 +1468,9 @@ int ldbRemoveChild(pid_t pid);
 void ldbKillForkedSessions(void);
 int ldbPendingChildren(void);
 
+/* MRuby Scripting */
+void mrbScriptingInit(int setup);
+
 /* Blocked clients */
 void processUnblockedClients(void);
 void blockClient(client *c, int btype);
