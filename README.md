@@ -1,3 +1,56 @@
+MRuby for Redis
+---------------
+
+This repository contains a *modified* version of Redis with an embedded MRuby
+1.2.0 engine (alongside the default Lua engine). It is unofficial, unsupported,
+and should be considered experimental, despite the excellent stability of both
+Redis and MRuby.
+
+Why does this exist?
+--------------------
+
+  - To bring mruby into exciting places.
+  - To open up new ways to extend Redis.
+  - Because it was fun!
+
+Do I need to do anything special to build this?
+-----------------------------------------------
+
+Yep. You'll need to put a copy of the mruby source code at `deps/mruby`. If you
+want a vanilla build, you can just clone the source, checkout the version you
+want, and hit `make`. Like this:
+
+```shell
+git clone https://github.com/colstrom/redis-mruby
+cd redis-mruby
+git clone https://github.com/mruby/mruby deps/mruby
+git -C deps/mruby checkout 1.2.0
+make
+```
+
+But it's more fun if you customize your mruby a bit. For an engine with similar
+functionality to the Lua build, add the following to deps/mruby/build_config.rb:
+
+```ruby
+conf.gem github: 'iij/mruby-iijson'
+conf.gem github: 'suzukaze/mruby-msgpack'
+conf.gem github: 'mattn/mruby-sha1'
+```
+
+Acknowledgements
+----------------
+
+Thanks to @antirez for writing clean, readable C. It's always a pleasure to
+read, and it made exploring the problem far easier than it could have been.
+
+Thanks to @jodosha for attempting this back in early 2014, and writing about it.
+This provided initial context and saved a great deal of time assessing
+requirements.
+
+And now, back to the standard documentation...
+
+---
+
 This README is just a fast *quick start* document. You can find more detailed documentation at http://redis.io.
 
 What is Redis?
