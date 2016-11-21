@@ -13,3 +13,7 @@ void mrbScriptingInit(int setup) {
 
   server.mrb = mrb;
 }
+
+void mrbScriptingRelease(void) {
+  mrb_close(server.mrb);
+}
