@@ -1,5 +1,6 @@
 #include "server.h"
 #include <mruby.h>
+#include <mruby/string.h>
 
 void mrbScriptingInit(int setup) {
   mrb_state *mrb = mrb_open();
@@ -21,4 +22,15 @@ void mrbScriptingRelease(void) {
 void mrbScriptingReset(void) {
   mrbScriptingRelease();
   mrbScriptingInit(0);
+}
+
+void mrbAddReply(client *client, mrb_state *mrb, mrb_value value) {
+  value = mrb_inspect(mrb, value);
+
+  if (!mrb_string_p(value)) return;
+
+  char *string = RSTRING_PTR(value);
+  int   length = RSTRING_LEN(value);
+
+  addReplyBulkCBuffer(client, string, length);
 }
