@@ -1633,6 +1633,7 @@ void objectCommand(client *c);
 void clientCommand(client *c);
 void evalCommand(client *c);
 void evalShaCommand(client *c);
+void mrbEvalCommand(client *c);
 void scriptCommand(client *c);
 void timeCommand(client *c);
 void bitopCommand(client *c);
