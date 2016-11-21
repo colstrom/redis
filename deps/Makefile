@@ -88,3 +88,9 @@ geohash-int: .make-prerequisites
 	cd geohash-int && $(MAKE)
 
 .PHONY: geohash-int
+
+.PHONY: mruby
+
+mruby: .make-prerequisites
+	@printf '%b %b\n' $(MAKECOLOR)MAKE$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR)
+	cd mruby && $(MAKE)
