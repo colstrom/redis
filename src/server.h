@@ -970,6 +970,7 @@ struct redisServer {
 
     /* MRuby Scripting */
     mrb_state *mrb; /* The MRuby interpreter */
+    client *mrb_client; /* As with Lua, a "fake client" to query from MRuby */
 
     /* Latency monitor */
     long long latency_monitor_threshold;
