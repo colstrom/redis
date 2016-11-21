@@ -46,6 +46,7 @@
 #include <syslog.h>
 #include <netinet/in.h>
 #include <lua.h>
+#include <mruby.h>
 #include <signal.h>
 
 typedef long long mstime_t; /* millisecond time type. */
@@ -966,6 +967,10 @@ struct redisServer {
                              execution. */
     int lua_kill;         /* Kill the script if true. */
     int lua_always_replicate_commands; /* Default replication type. */
+
+    /* MRuby Scripting */
+    mrb_state *mrb; /* The MRuby interpreter */
+
     /* Latency monitor */
     long long latency_monitor_threshold;
     dict *latency_events;
